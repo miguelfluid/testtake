@@ -1,0 +1,18 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.WebSockets" Version="2.2.1" />
+    <PackageReference Include="Microsoft.Azure.ServiceBus" Version="5.1.2" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\TestTake.Core\TestTake.Core.csproj" />
+    <ProjectReference Include="..\TestTake.Data\TestTake.Data.csproj" />
+    <ProjectReference Include="..\TestTake.Views\TestTake.Views.csproj" />
+  </ItemGroup>
+
+</Project>

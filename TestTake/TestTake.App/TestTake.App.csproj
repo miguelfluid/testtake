@@ -1,0 +1,15 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\TestTake.Core\TestTake.Core.csproj" />
+    <ProjectReference Include="..\TestTake.Data\TestTake.Data.csproj" />
+    <ProjectReference Include="..\TestTake.Services\TestTake.Services.csproj" />
+    <ProjectReference Include="..\TestTake.Views\TestTake.Views.csproj" />
+  </ItemGroup>
+
+</Project>
