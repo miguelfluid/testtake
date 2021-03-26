@@ -9,6 +9,8 @@ namespace TestTake.Core.Business
   {
     public int IdRoom { get; set; }
     public string NameRoom { get; set; }
+    public string NameUserSend { get; set; }
+    public string NameUserReceived { get; set; }
     public int IdUserSend { get; set; }
     public int? IdUserReceived { get; set; }
     public string Message { get; set; }

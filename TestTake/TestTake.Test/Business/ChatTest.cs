@@ -27,12 +27,12 @@ namespace TestTake.Test.Services.Auth
       {
         ViewCrudUser viewUser = new ViewCrudUser();
 
-        // name invalid 
+        
         Exception ex = Assert.Throws<Exception>(() => service.NewUser(viewUser));
         Assert.Equal("USER02", ex.Message);
 
         viewUser.Name = "test1";
-        // mail invalid
+        
         ex = Assert.Throws<Exception>(() => service.NewUser(viewUser));
         Assert.Equal("USER03", ex.Message);
 
@@ -53,6 +53,35 @@ namespace TestTake.Test.Services.Auth
         Repository<User> repositoryUser = new Repository<User>(context);
         repositoryUser.Delete(viewUser.Id);
 
+        viewUser.Name = "test1";
+
+        ViewCrudRoom viewRoom = new ViewCrudRoom();
+        ex = Assert.Throws<Exception>(() => service.NewRoom(viewRoom));
+        Assert.Equal("ROOM02", ex.Message);
+
+        viewRoom.Name = "room1";
+        Assert.Equal("ROOM05", service.NewRoom(viewRoom));
+
+        //list
+        List<ViewListRoom> listRoom = service.ListRoom(10, 1, "");
+        Assert.True(listRoom.Count > 0);
+        viewRoom.Id = listRoom.FirstOrDefault().Id;
+
+        ViewCrudChat view = new ViewCrudChat();
+        ex = Assert.Throws<Exception>(() => service.New(view));
+        Assert.Equal("CHAT02", ex.Message);
+
+        
+        view.IdUserSend = viewUser.Id;
+        view.NameUserSend = viewUser.Name;
+        view.Message = view.NameUserSend + ": " + "test";
+        view.IdRoom = viewRoom.Id;
+        view.Name = viewRoom.Name;
+        view.Private = false;
+        Assert.Equal("CHAT01", service.New(view));
+
+        List<ViewCrudChat> list = service.List(view.IdRoom, 10, 1, "");
+        Assert.True(list.Count > 0);
       }
       catch (Exception e)
       {

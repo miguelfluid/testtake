@@ -93,9 +93,36 @@ namespace TestTake.Services.Auth
         {
           Name = view.Name
         });
-        return "USER05";
+        return "ROOM05";
       }
       catch (Exception e)
+      {
+        throw e;
+      }
+    }
+
+    public string New(ViewCrudChat view)
+    {
+      try
+      {
+        if (string.IsNullOrEmpty(view.Message))
+        {
+          throw new Exception("CHAT02");
+        }
+        serviceChat.Insert(new Chat()
+        {
+          NameRoom = view.Name,
+          IdRoom = view.IdRoom,
+          IdUserSend = view.IdUserSend,
+          IdUserReceived = view.IdUserReceived,
+          Date = DateTime.Now,
+          NameUserReceived = view.NameUserReceived,
+          NameUserSend = view.NameUserSend,
+          Message = view.Message,
+          Private = view.Private
+        });
+        return "CHAT01";
+      }catch(Exception e)
       {
         throw e;
       }
@@ -107,6 +134,19 @@ namespace TestTake.Services.Auth
       {
         return serviceRoom.Get(p => p.Name.ToUpper().Contains(filter.ToUpper())).Select(p => p.GetViewList())
           .OrderBy(o => o.Name).Skip(pageSize * (page - 1)).Take(pageSize).ToList();
+      }
+      catch (Exception e)
+      {
+        throw e;
+      }
+    }
+
+    public List<ViewCrudChat> List(int idroom, int pageSize, int page, string filter)
+    {
+      try
+      {
+        return serviceChat.Get(p => p.IdRoom == idroom && p.NameRoom.ToUpper().Contains(filter.ToUpper())).OrderBy(o => o.Date).Select(p => p.GetViewCrud())
+          .Skip(pageSize * (page - 1)).Take(pageSize).ToList();
       }
       catch (Exception e)
       {

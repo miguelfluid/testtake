@@ -6,6 +6,8 @@ namespace TestTake.Views.BusinessCrud
   {
     public int IdRoom { get; set; }
     public int IdUserSend { get; set; }
+    public string NameUserSend { get; set; }
+    public string NameUserReceived { get; set; }
     public int? IdUserReceived { get; set; }
     public string Message { get; set; }
     public DateTime Date { get; set; }

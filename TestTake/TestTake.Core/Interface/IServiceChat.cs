@@ -6,10 +6,12 @@ namespace TestTake.Core.Interface
 {
   public interface IServiceChat
   {
-    public string NewUser(ViewCrudUser view);
-    public ViewCrudUser GetUser(int id);
-    public List<ViewListUser> ListUser(int pageSize, int page, string filter);
-    public string NewRoom(ViewCrudRoom view);
-    public List<ViewListRoom> ListRoom(int pageSize, int page, string filter);
+    string NewUser(ViewCrudUser view);
+    ViewCrudUser GetUser(int id);
+    List<ViewListUser> ListUser(int pageSize, int page, string filter);
+    string NewRoom(ViewCrudRoom view);
+    List<ViewListRoom> ListRoom(int pageSize, int page, string filter);
+    List<ViewCrudChat> List(int idroom, int pageSize, int page, string filter);
+    string New(ViewCrudChat view);
   }
 }
